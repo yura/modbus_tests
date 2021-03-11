@@ -1,8 +1,17 @@
-/target
+# vim
+.*.sw?
 
-# C++
+# c++
 CMakeCache.txt
 CMakeFiles/
+cmake_install.cmake
 Makefile
 ModbusTest
-cmake_install.cmake
+
+# haskell
+.stack-work/
+
+# rust
+/target
+
+
