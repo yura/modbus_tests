@@ -1,6 +1,6 @@
 # ModBus with Haskell
 
-Using socket.
+Using https://github.com/3kyro/modbus-tcp.
 
 ## Usage
 
@@ -8,5 +8,4 @@ Using socket.
 stack build
 stack exec modbus-tests-exe
 ```
-
 
