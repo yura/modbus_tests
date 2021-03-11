@@ -1,6 +1,10 @@
 CMakeCache.txt
 CMakeFiles
-Makefile
-ModbusTest
 cmake_install.cmake
 
+Makefile
+
+ModbusTest
+SocketTest
+
+.*.sw?
