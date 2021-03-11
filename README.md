@@ -1,11 +1,10 @@
 # ModBus with Ruby
 
-Using `rmodbus` get.
+Using socket.
 
 ## Usage
 
 ```sh
-gem i rmodbus
 ruby test.rb
 ```
 

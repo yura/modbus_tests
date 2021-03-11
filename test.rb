@@ -1,13 +1,25 @@
-require 'rmodbus'
+require 'socket'
 
-# slave 1, 1 holding register #4064
-# [00][01][00][00][00][06][01][03][0f][e0][00][01]
-# msg = @transaction.to_word + "\0\0" + (pdu.size + 1).to_word + @uid.chr + pdu
-
-ModBus::TCPClient.connect('192.168.0.99', 502) do |client|
-  client.with_slave(1) do |slave|
-    slave.debug = true
-    result = slave.read_holding_registers(4064, 1)
-    puts result
-  end
+def array_to_string(array)
+  array.pack('C*')
 end
+
+s = TCPSocket.new '192.168.0.99', 502
+
+request = [0x00, 0x01, 0x00, 0x00, 0x00, 0x06, 0x01, 0x03, 0x0f, 0xe0, 0x00, 0x01]
+request_string = array_to_string(request)
+
+puts "before send #{request_string.inspect}"
+
+s.write request_string
+
+puts 'sent'
+
+begin # emulate blocking recv.
+  p s.recv_nonblock(11) #=> "aaa"
+rescue IO::WaitReadable
+  IO.select([s])
+  retry
+end
+
+s.close
