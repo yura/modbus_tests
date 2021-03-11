@@ -1,11 +1,12 @@
-# ModBus with Ruby
+# ModBus with Haskell
 
 Using socket.
 
 ## Usage
 
 ```sh
-ruby test.rb
+stack build
+stack exec modbus-tests-exe
 ```
 
 
